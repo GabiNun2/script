@@ -14,7 +14,7 @@ $Sid = (Get-LocalUser $Env:UserName).Sid.Value
 $Package = (Get-AppxPackage Microsoft.SecHealthUI).PackageFullName
 
 New-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore\EndOfLife\$Sid\$Package" -Force
-#Remove-AppxPackage -Package $Package
+Remove-AppxPackage -Package $Package
 
 Dism /Online /Enable-Feature /FeatureName:Microsoft-Hyper-V-All /NoRestart
 Dism /Online /Disable-Feature /FeatureName:Microsoft-RemoteDesktopConnection /NoRestart
